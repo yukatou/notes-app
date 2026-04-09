@@ -1,0 +1,31 @@
+{
+  "name": "sample-web-application",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/growcite/shuwasystem-modern-application-development-handson.git"
+  },
+  "author": "Akinari Tsugo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/growcite/shuwasystem-modern-application-development-handson/issues"
+  },
+  "homepage": "https://github.com/growcite/shuwasystem-modern-application-development-handson#readme",
+  "dependencies": {
+    "@azure/identity": "^4.7.0",
+    "bcrypt": "^5.1.1",
+    "deepmerge": "^4.3.1",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "connect-pg-simple": "^9.0.1",
+    "express-session": "^1.18.1",
+    "pg": "^8.13.3",
+    "openai": "^4.86.1",
+    "uuid": "^11.0.5"
+  }
+}

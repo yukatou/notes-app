@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Application Development Hands-on</title>
+  <%- include('../_shared/stylesheets') %>
+  <link href="//cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/stylesheets/default.css">
+  <link rel="stylesheet" href="/stylesheets/notes.css">
+</head>
+<body>
+  <div class="outerframe container-fluid">
+    <nav class="sidebar">
+      <%- include('./_sidebar', locals) %>
+    </nav>
+    <main class="main">
+      <input type="hidden" name="bookid" id="bookid" value="<%= locals.item?.BookID %>" />
+      <input type="hidden" name="noteid" id="noteid" value="<%= locals.item?.NoteID %>" />
+      <div class="note-title container">
+        <input type="text" name="title" id="title" class="px-2 py-1" placeholder="Title" />
+      </div>
+      <div class="note-content container">
+        <div id="editor" class="editor">
+        </div>
+      </div>
+    </main>
+    <aside class="chatpane open">
+      <%- include('./_chatpane', locals) %>
+    </aside>
+  </div>
+  <div class="d-none">
+    <%- include('../_shared/javascripts') %>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    <script>
+      const quill = new Quill('#editor', { theme: 'snow' });
+    </script>
+    <script src="/javascripts/edit.js"></script>
+    <script src="/javascripts/chat.js"></script>
+  </div>
+</body>
+</html>

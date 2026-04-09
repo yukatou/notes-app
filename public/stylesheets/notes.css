@@ -1,0 +1,181 @@
+/* -------------------------------------------------- */
+/* 全体のフレーム
+/* -------------------------------------------------- */
+/* 全体構成：水平方向3カラム分割 */
+.outerframe {
+  display: flex;
+  height: 100%;
+
+  .sidebar {
+    width: 250px;
+    height: 100%;
+    background-color: var(--bs-light);
+  }
+
+  .main {
+    flex: 1 0 0;
+    height: 100%;
+    background-color: var(--bs-body-bg);
+  }
+
+  .chatpane {
+    height: 100%;
+    background-color: var(--bs-light);
+  }
+
+  .chatpane.open {
+    width: 250px;
+  }
+
+  .chatpane.close {
+    width: auto;
+
+    .chat-history,
+    .chat-input,
+    .chat-tools {
+      display: none;
+    }
+  }
+}
+
+/* 左ナビゲーション：垂直方向４カラム分割 */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+
+  .sidebar-header {
+    width: 100%;
+    margin: .5rem 0;
+  }
+
+  .sidebar-search {
+    width: 100%;
+    margin: .5rem 0;
+  }
+
+  .sidebar-create {
+    width: 100%;
+    margin: .5rem 0;
+  }
+
+  .sidebar-list {
+    width: 100%;
+    flex: 1 0 0;
+    overflow: auto;
+  }
+}
+
+/* 中央コンテンツ-タイトル/エディタ：垂直方向２カラム分割 */
+.main {
+  display: flex;
+  flex-direction: column;
+
+  .note-title {
+    height: 60px;
+    padding-top: .5rem;
+  }
+
+  .note-content {
+    flex: 1 0 0;
+    height: calc(100% - 60px);
+    padding-bottom: .5rem;
+  }
+}
+
+/* 中央コンテンツ-編集エリア内: 垂直２カラム分割 */
+.main {
+  .note-content {
+    display: flex;
+    flex-direction: column;
+
+    .ql-toolbar {
+      width: 100%;
+    }
+
+    .ql-container {
+      flex: 1 0 0;
+      height: 100%;
+      overflow: auto;
+    }
+  }
+}
+
+/* 右チャットエリア: 垂直方向３カラム分割 */
+.chatpane {
+  display: flex;
+  flex-direction: column;
+
+  .chat-header {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+  }
+
+  .chat-history {
+    flex: 1 0 0;
+    overflow: auto;
+  }
+
+  .chat-input {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+  }
+}
+
+/* -------------------------------------------------- */
+/* 個別エリアの詳細スタイル */
+/* -------------------------------------------------- */
+/* 左サイドバー */
+
+#notes {
+  li {
+
+    a {
+      color: #6c757d;
+    }
+
+    div {
+      visibility: hidden;
+    }
+  }
+
+  li.active {
+    background-color: #dee2e6;
+
+    a {
+      color: #6c757d;
+    }
+  }
+
+  li.hover {
+    background-color: #e9ecef;
+
+    a {
+      color: #212529;
+    }
+
+    div {
+      visibility: visible;
+    }
+  }
+}
+
+/* 中央コンテンツ */
+.note-title input {
+  width: 100%;
+  outline: none;
+  border-top: 0px;
+  border-right: 0px;
+  border-bottom: 1px solid #cccccc !important;
+  border-left: 0px;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.editor {
+  overflow: auto;
+}
+
+/* チャットエリア */
+.chat-header {
+  text-align: right;
+}

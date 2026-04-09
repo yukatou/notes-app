@@ -1,0 +1,17 @@
+<li class="nav-item w-100 mb-1 position-relative rounded <%= locals.Active ? 'active' : '' %>"
+  data-noteid="<%= locals.NoteID %>">
+  <a href="/notes/<%= locals.NoteID %>" class="d-block ps-3 pe-5 py-1 text-decoration-none text-truncate"
+    data-action="select">
+    <% if (locals.NoteTitle) { %>
+    <%= locals.NoteTitle %>
+    <% } else { %>
+    <%- `&nbsp;` %>
+    <% } %>
+  </a>
+  <div class="position-absolute top-0 end-0 px-3 py-1">
+    <a href="/notes/delete/<%= locals.NoteID %>" class="text-decoration-none"
+      data-action="delete">
+      <i class="fa-solid fa-trash-can"></i>
+    </a>
+  </div>
+</li>

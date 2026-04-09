@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickMind - SignUp</title>
+  <%- include('../_shared/stylesheets') %>
+  <link rel="stylesheet" href="/stylesheets/default.css">
+</head>
+<body>
+  <div class="container-fluid h-100 position-relative">
+    <main class="h-100 p-3">
+      <div class="h-100 d-flex flex-column justify-content-center">
+        <div class="row justify-content-center">
+
+          <div class="col-3 px-3 py-2 rounded-3 border">
+            <div class="my-5">
+              <h1 class="text-center mb-3 fs-3 fw-bold">
+                Sign up to QuickMind  
+              </h1>
+            </div>
+            <div class="my-4">
+              <form class="mx-3" action="/auth/signup" method="POST">
+                <% if (locals.message) { %>
+                <div class="alert alert-danger"><%= message %></div>
+                <% } %>
+                <div class="mb-3">
+                  <label for="username" class="form-label">Username <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email address <span class="text-danger">*</span></label>
+                  <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+                  <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Sing up</button>
+              </form>
+            </div>
+            <div class="my-4">
+              <p class="mx-3">Already have an account? <a href="/auth/signin">Sign in here</a></p>
+            </div>
+          </div>
+
+        </div>
+      </main>
+  </div>
+</body>
+</html>

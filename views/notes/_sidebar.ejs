@@ -1,0 +1,64 @@
+<div class="sidebar-header container position-relative">
+  <div class="row">
+    <div class="col text-truncate">
+      <span class="user-icon fs-2">
+        <i class="fa-solid fa-circle-user"></i>
+      </span>
+      <span class="user-name fs-2">
+        <%= locals.user?.Username || 'Guest' %>
+      </span>
+    </div>
+    <div class="col-2">
+      <button class="btn btn-outline-secondary btn-sm h-100 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMenu" aria-expanded="false" aria-controls="collapseMenu">
+        <i class="fa-solid fa-ellipsis-vertical"></i>
+      </button>
+    </div>
+  </div>
+  <div class="collapse card px-2 py-1 position-absolute z-3 end-0 me-2" id="collapseMenu">
+    <ul class="nav flex-column text-end">
+      <li class="nav-item">
+        <form action="/auth/signout" method="post">
+          <button type="submit" class="btn btn-outline-secondary btn-sm border-0">
+            <i class="fa-solid fa-right-from-bracket"></i> Sign out
+          </button>
+        </form>
+      </li>
+      <li class="nav-item">
+        <form action="/auth/me" method="get">
+          <button type="submit" class="btn btn-outline-secondary btn-sm border-0" disabled>
+            <i class="fa-solid fa-gear"></i> Account
+          </button>
+        </form>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="sidebar-search container">
+  <form class="d-flex" role="search">
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search...">
+        <button class="btn btn-secondary" type="button" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+  </form>
+</div>
+<div class="sidebar-create container">
+  <form class="d-flex" role="create">
+    <a href="/notes/new" class="btn btn-secondary w-100">
+        Create new note
+        <span class="d-inline-block ml-2">
+          <i class="fa-solid fa-file-circle-plus"></i>
+        </span>
+    </a>
+  </form>
+</div>
+<div class="sidebar-list container">
+  <ul id="notes" class="nav nav-pills flex-column mb-auto">
+  <% if (locals.isCreate ) { %>
+  <%- include('./_listitem', { ...locals.item, ...{ Active: true } }) %>
+  <% } %>
+  <% for (let item of locals.list) {%>
+  <% if (item.NoteID === locals.item?.NoteID) { item.Active = true; } %>
+  <%- include('./_listitem', item) %>
+  <% } %>
+  </ul>
+</div>

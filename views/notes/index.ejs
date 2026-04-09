@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Application Development Hands-on</title>
+  <%- include('../_shared/stylesheets') %>
+  <link href="//cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/stylesheets/default.css">
+  <link rel="stylesheet" href="/stylesheets/notes.css">
+</head>
+<body>
+  <div class="outerframe container-fluid">
+    <nav class="sidebar">
+      <%- include('./_sidebar', locals) %>
+    </nav>
+    <main class="main">
+      <div class="h-100 d-flex flex-column justify-content-center">
+        <h1 class="text-center mb-3">
+          <i class="fa-solid fa-feather"></i> QuickMind
+        </h1>
+        <div class="text-center mb-5">
+          <a href="/notes/new" class="btn btn-outline-primary">Create New Note</a>
+        </div>
+      </div>
+    </main>
+    <aside class="chatpane open">
+      <%- include('./_chatpane', locals) %>
+    </aside>
+  </div>
+  <div class="d-none">
+    <%- include('../_shared/javascripts') %>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    <script>
+      const quill = new Quill('#editor', { theme: 'snow' });
+    </script>
+    <script src="/javascripts/chat.js"></script>
+  </div>
+</body>
+</html>

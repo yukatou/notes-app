@@ -1,0 +1,37 @@
+<div class="chat-header container">
+  <div class="d-flex flex-row">
+    <div class="chat-tools flex-grow-1">
+      <span class="me-2">
+        <button class="btn btn-outline-secondary btn-sm" type="button" id="btnChatpaneClear"><i class="fa-solid fa-broom"></i></button>
+      </span>
+    </div>
+    <div class="chat-toggle">
+      <input type="checkbox" class="btn-check" id="btnChatpaneToggle" autocomplete="off" checked>
+      <label class="btn btn-outline-secondary btn-sm" for="btnChatpaneToggle"><i class="fa-solid fa-robot"></i></label>
+    </div>
+  </div>
+</div>
+<div class="chat-history container">
+  <input type="hidden" id="txtTopicId" value="" />
+  <div id="divChatHistory"></div>
+</div>
+<div class="chat-input container">
+  <form action="" class="bg-light rounded p-2">
+    <div class="input-group">
+      <textarea name="txtMessage" id="txtMessage" cols="3" class="form-control"></textarea>
+    </div>
+    <div class="d-flex flex-row mt-2">
+      <div class="flex-grow-1">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="chkAddNote">
+          <label class="form-check-label" for="chkAddNote">
+            Add Note
+          </label>
+        </div>
+      </div>
+      <div>
+        <button class="btn btn-outline-secondary btn-sm" type="button" id="btnSendMessage"><i class="fa-solid fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </form>
+</div>
