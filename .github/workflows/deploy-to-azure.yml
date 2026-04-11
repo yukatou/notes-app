@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  build-deploy:
     runs-on: ubuntu-latest
     steps:
     - name: Login to Azure
@@ -23,7 +23,7 @@ jobs:
       uses: azure/container-apps-deploy-action@v2
       with:
         appSourcePath: ${{ github.workspace }}
-        acrName: ${{ secrets.ACR_SERVER }}
+        acrName: ssnotesdevacr1
         containerAppName: ${{ secrets.ACA_NAME }}
         resourceGroup: ${{ secrets.RESOURCE_GROUP }}
         imageToBuild: ${{ secrets.ACR_SERVER }}/${{ secrets.ACR_REPOSITORY }}:${{ github.sha }} 
