@@ -28,8 +28,8 @@ jobs:
 
     - name: Build and push container image to registry
       run: |
-        docker build -t ${{ secrets.ACR_NAME }}/${{ secrets.ACR_REPOSITORY }}:${{ github.sha }} .
-        docker push ${{ secrets.ACR_NAME }}/${{ secrets.ACR_REPOSITORY }}:${{ github.sha }}
+        docker build -t ${{ secrets.ACR_SERVER }}/${{ secrets.ACR_REPOSITORY }}:${{ github.sha }} .
+        docker push ${{ secrets.ACR_SERVER }}/${{ secrets.ACR_REPOSITORY }}:${{ github.sha }}
 
   deploy:
     runs-on: ubuntu-latest
