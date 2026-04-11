@@ -1,6 +1,10 @@
 name: Build & Deploy to Azure Container Apps
 
+
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 
@@ -37,9 +41,6 @@ jobs:
       uses: azure/login@v2
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Login to ACR
-      run: az acr login --name ssnotesdevacr1
 
     - name: Deploy to Azure Container Apps
       uses: azure/container-apps-deploy-action@v2
