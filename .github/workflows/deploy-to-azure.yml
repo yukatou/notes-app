@@ -29,5 +29,5 @@ jobs:
     - name: Build and push container image to registry
       run: |
         docker build -t ${{ vars.ACR_NAME }}.azurecr.io/notes/webapp:${{ github.sha }} .
-        docker push -t ${{ vars.ACR_NAME }}.azurecr.io/notes/webapp:${{ github.sha }}
+        docker push ${{ vars.ACR_NAME }}.azurecr.io/notes/webapp:${{ github.sha }}
   
