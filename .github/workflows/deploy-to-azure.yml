@@ -12,32 +12,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-    
-    - name: Login to Azure
-      uses: azure/login@v2
-      with:
-        client-id: ${{ secrets.AZURE_CLIENT_ID }}
-        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-    
-    - name: Login to ACR
-      run: |
-        az acr login --name ${{ secrets.ACR_SERVER }}
-
-    - name: Build and push container image to registry
-      run: |
-        docker build -t ${{ secrets.ACR_SERVER }}/${{ secrets.ACR_REPOSITORY }}:${{ github.sha }} .
-        docker push ${{ secrets.ACR_SERVER }}/${{ secrets.ACR_REPOSITORY }}:${{ github.sha }}
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-
     - name: Login to Azure
       uses: azure/login@v2
       with:
@@ -46,10 +20,13 @@ jobs:
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
     - name: Deploy to Azure Container Apps
-      uses: azure/webapps-deploy@v2
+      uses: azure/container-apps-deploy-action@v2
       with:
-        app-name: ${{ secrets.ACA_NAME }}
-        images: ${{ secrets.ACR_SERVER }}/${{ secrets.ACR_REPOSITORY }}:${{ github.sha }} 
+        appSourcePath: ${{ github.workspace }}
+        acrName: ${{ secrets.ACR_SERVER }}
+        containerAppName: ${{ secrets.ACA_NAME }}
+        resourceGroup: ${{ secrets.RESOURCE_GROUP }}
+        imageToBuild: ${{ secrets.ACR_SERVER }}/${{ secrets.ACR_REPOSITORY }}:${{ github.sha }} 
 
 
   
