@@ -46,11 +46,10 @@ jobs:
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
     - name: Deploy to Azure Container Apps
-      run: |
-        az containerapp update \
-          --name ${{ secrets.ACA_NAME }} \
-          --resource-group ${{ secrets.RESOURCE_GROUP}} \
-          --image ${{ secrets.AZURE_SUBSCRIPTION_ID }}/${{ secrets.ACR_REPOSITORY }}:${{ github.sha }}
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: ${{ secrets.ACA_NAME }}
+        images: ${{ secrets.ACR_SERVER }}/${{ secrets.ACR_REPOSITORY }}:${{ github.sha }} 
 
 
   
