@@ -24,7 +24,7 @@ jobs:
     
     - name: Login to ACR
       run: |
-        az acr login --name ${{ vars.ACR_NAME }}
+        az acr login --name ${{ secrets.ACR_SERVER }}
 
     - name: Build and push container image to registry
       run: |
